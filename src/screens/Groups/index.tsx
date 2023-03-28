@@ -7,9 +7,15 @@ import { Header } from "@components/Header";
 import { Hightlight } from "@components/Highlight";
 import { ListEmpty } from "@components/LIstEmpty";
 import { Button } from "@components/Button";
+import { useNavigation } from "@react-navigation/native";
 
 export default function Groups() {
+  const { navigate } = useNavigation();
   const [groups, setGroups] = useState(["Rocket", "Comunidade"]);
+
+  function handleNewGroup() {
+    navigate("new");
+  }
 
   return (
     <Style.Container>
@@ -27,7 +33,7 @@ export default function Groups() {
         showsVerticalScrollIndicator={false}
       />
 
-      <Button title="Criar nova turma" />
+      <Button title="Criar nova turma" onPress={handleNewGroup} />
     </Style.Container>
   );
 }
